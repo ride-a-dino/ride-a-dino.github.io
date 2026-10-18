@@ -1,0 +1,30 @@
+{
+  "enabled": true,
+  "slug": "",
+  "pageType": "home",
+  "title": "Ride a Dino Guide",
+  "description": "Guides, walkthroughs, tips, updates, and reference information for Ride a Dino.",
+  "navVisible": true,
+  "hero": {
+    "eyebrow": "Game guide",
+    "heading": "Ride a Dino",
+    "lead": "Guides, walkthroughs, tips, updates, and reference information for Ride a Dino.",
+    "supportingText": "Browse current game information and practical guides.",
+    "secondaryLink": {
+      "label": "Open official game page",
+      "url": "https://www.roblox.com/games/93523763376122"
+    }
+  },
+  "sections": [
+    {
+      "id": "start-here",
+      "heading": "Game information",
+      "paragraphs": [
+        "Current Ride a Dino guides and reference information will be published here."
+      ]
+    }
+  ],
+  "faq": [],
+  "screenshots": [],
+  "lastReviewed": "2026-10-18"
+}
