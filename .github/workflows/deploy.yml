@@ -86,8 +86,14 @@ jobs:
               "grip-training/": "Ride a Dino Grip Training Guide",
               "ranch/": "Ride a Dino Ranch and Pen Upgrade Guide"
           }
+          footers = []
           for path, heading in pages.items():
               html = fetch(path, heading)
+              footer = re.search(r"<footer\\b[^>]*>[\\s\\S]*?</footer>", html, flags=re.I)
+              assert footer, f"Footer missing: {path or '/'}"
+              assert html.lower().count("<footer") == 1, f"Duplicate Footer: {path or '/'}"
+              assert "global-footer" in footer.group(0), f"Wrong Footer template: {path or '/'}"
+              footers.append(footer.group(0))
               expected_url = base + path
               assert f'href="{expected_url}"' in html, f"Canonical not found in {path or '/'}"
               assert len(re.findall(r'<h1\b', html, flags=re.I)) == 1, f"Expected one H1 in {path or '/'}"
@@ -95,6 +101,8 @@ jobs:
               assert "grip-training/" in html and "ranch/" in html, f"Internal navigation missing from {path or '/'}"
               assert not any(term in html for term in ("Yorich", "Codex", "ChatGPT", "Gator Dragon Games")), f"Unexpected template text in {path or '/'}"
               print(f"Verified HTTP 200, H1, canonical, GA4 and navigation: {expected_url}")
+          assert len(set(footers)) == 1, "Footer contents differ between home and inner pages"
+          print("Verified identical global footer on all 3 READY pages")
           robots = fetch("robots.txt", "Allow: /")
           assert "Sitemap: https://ride-a-dino.github.io/sitemap.xml" in robots
           sitemap = fetch("sitemap.xml", "<urlset")

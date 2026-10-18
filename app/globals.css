@@ -7,6 +7,9 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
   background-color: hsl(var(--background));
   background-image: var(--background-pattern);
   background-size: 28px 28px;
@@ -14,6 +17,7 @@ body {
   font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
 }
+#main-content { flex: 1 0 auto; min-width: 0; }
 a { transition: color .18s ease, border-color .18s ease, background-color .18s ease, transform .18s ease; }
 ::selection { background: hsl(var(--primary) / .32); }
 
