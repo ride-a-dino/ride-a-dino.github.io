@@ -2,6 +2,7 @@ import type { CSSProperties, ReactNode } from "react";
 import { Analytics } from "@/components/integrations/analytics";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
+import { FixedTemplateHeader } from "@/components/templates/fixed-template-header";
 import { siteConfig } from "@/config/site";
 import { siteSkin } from "@/config/skin";
 import { scopedTemplateCss } from "@/lib/fixed-template/render";
@@ -45,7 +46,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         {fixed ? <style dangerouslySetInnerHTML={{ __html: scopedTemplateCss(fixedSkin, siteConfig.theme.accentColorId) }} /> : null}
         <style dangerouslySetInnerHTML={{ __html: fontFaceCss(siteConfig.hosting.basePath) }} />
         <a href="#main-content" className="skip-link">Skip to content</a>
-        <SiteHeader links={navLinks} />
+        {fixed ? <FixedTemplateHeader links={navLinks} /> : <SiteHeader links={navLinks} />}
         <div id="main-content">{children}</div>
         {fixed ? null : <SiteFooter coreLinks={navLinks} legalLinks={legalLinks} />}
       </body>
