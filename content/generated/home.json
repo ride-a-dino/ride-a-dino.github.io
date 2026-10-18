@@ -2,29 +2,206 @@
   "enabled": true,
   "slug": "",
   "pageType": "home",
-  "title": "Ride a Dino Guide",
-  "description": "Guides, walkthroughs, tips, updates, and reference information for Ride a Dino.",
+  "title": "Ride a Dino Wiki & Guide – Grip, Dinosaurs, Ranch",
+  "description": "Ride a Dino Roblox guide for Grip training, dinosaur collecting, ranch upgrades and taming. Find the correct game and practical guides in one place.",
   "navVisible": true,
   "hero": {
-    "eyebrow": "Game guide",
-    "heading": "Ride a Dino",
-    "lead": "Guides, walkthroughs, tips, updates, and reference information for Ride a Dino.",
-    "supportingText": "Browse current game information and practical guides.",
+    "eyebrow": "Independent Roblox game guide",
+    "heading": "Ride a Dino Wiki and Beginner Guide",
+    "lead": "Ride a Dino is a Roblox dinosaur-riding and collecting game by and Catch Them All. Train Grip on Dino Machines, tame roaming dinosaurs, and bring your collection home to the ranch.",
+    "supportingText": "Find the correct Roblox game, understand its training-to-ranch loop, and get practical help without mixing in the other same-name Roblox experience. Independent fan-made resource.",
+    "primaryLink": {
+      "label": "Start Grip Training",
+      "slug": "grip-training"
+    },
     "secondaryLink": {
-      "label": "Open official game page",
-      "url": "https://www.roblox.com/games/93523763376122"
+      "label": "Play Ride a Dino on Roblox",
+      "url": "https://www.roblox.com/games/93523763376122/Ride-a-Dino"
     }
   },
   "sections": [
     {
-      "id": "start-here",
-      "heading": "Game information",
+      "id": "quick-guide",
+      "heading": "Ride a Dino Wiki: Quick Start",
+      "intro": "The confirmed game loop is train Grip, ride and tame dinosaurs, return them to your ranch, and upgrade pens.",
       "paragraphs": [
-        "Current Ride a Dino guides and reference information will be published here."
+        "The official Roblox game page identifies the experience as Ride a Dino by the group and Catch Them All. Open that listing to play the actual game: the root Place ID is 93523763376122 (Universe ID 10758824872). Other Roblox titles share the same name, so checking the group and link matters. In particular, do not apply another game's dinosaur-egg hatching, speed mutation, or pet-upgrade instructions to this experience.",
+        "In the correct game, the developer introduces Dino Machines for building Grip, stampeding dinosaurs to jump onto and ride through a canyon, more than 50 species to tame, and a ranch where pens can be upgraded. These are the core mechanics you can rely on from the developer's description. Button prompts, requirements, and income values are live gameplay details, not published in that description.",
+        "Start with the Grip training guide if a riding attempt is difficult, or the ranch guide when you want to understand pens and cash. Both focus on a specific player task, with the limits of public game information made clear."
+      ],
+      "links": [
+        {
+          "label": "Grip Training & Dino Machines",
+          "slug": "grip-training",
+          "description": "How to approach training, track Grip progress, and prepare for the next ride."
+        },
+        {
+          "label": "Ranch, Pens & Cash",
+          "slug": "ranch",
+          "description": "Understand the purpose of pens, collection storage, and in-game upgrade decisions."
+        }
+      ]
+    },
+    {
+      "id": "game-info",
+      "heading": "What Is Ride a Dino on Roblox?",
+      "paragraphs": [
+        "Ride a Dino combines dinosaur riding and collecting with a ranch-building progression loop. The developer describes leaping onto a charging dinosaur, riding across a canyon, training Grip on Dino Machines, exploring multiple eras, taming different species, and using the ranch to grow a collection. It is a Roblox experience, not a browser game embedded on this fan site.",
+        "The developer's listing mentions nine eras. It names Plains, Desert, Jungle, Snow, and Volcano as examples, but those five examples are not a complete ordered map of all nine areas. It also advertises more than 50 dinosaur species spanning Common through Divine and occasional Secret Dinos. Without a current collection screen or a developer-maintained roster, the exact species names, spawn odds, and locations should not be inferred.",
+        "The public listing states support for desktop, console, mobile, and tablet. It does not supply a reliable single control map for all four, so use the in-game prompts appropriate to your device when starting a ride or interacting with a machine."
+      ],
+      "table": {
+        "caption": "Ride a Dino — official game facts",
+        "columns": [
+          "Topic",
+          "Published game information"
+        ],
+        "rows": [
+          [
+            "Game / platform",
+            "Ride a Dino on Roblox"
+          ],
+          [
+            "Creator",
+            "and Catch Them All"
+          ],
+          [
+            "Official place",
+            "93523763376122"
+          ],
+          [
+            "Training",
+            "Dino Machines build Grip"
+          ],
+          [
+            "Collection",
+            "More than 50 species; Common through Divine"
+          ],
+          [
+            "Exploration",
+            "Nine eras, including Plains, Desert, Jungle, Snow, and Volcano"
+          ],
+          [
+            "Ranch",
+            "Bring dinosaurs home, upgrade pens, earn cash while riding"
+          ],
+          [
+            "Surprises",
+            "Occasional Secret Dinos"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "progression",
+      "heading": "Ride a Dino: How the Gameplay Loop Works",
+      "intro": "You can use the following loop to work out which system needs your attention next.",
+      "steps": [
+        {
+          "heading": "Train Grip",
+          "description": "Use Dino Machines as described by the developer. Check your current on-screen Grip indicator and interaction prompts; don't assume a particular key or machine multiplier."
+        },
+        {
+          "heading": "Ride and tame",
+          "description": "The developer says to leap onto a stampeding dinosaur and ride through a canyon. Follow the current game UI; a successful taming state must be confirmed in the game."
+        },
+        {
+          "heading": "Return to the ranch",
+          "description": "The collection loop includes bringing dinosaurs home to a ranch. Check the game's visible collection or ranch state instead of treating every attempted ride as a completed tame."
+        },
+        {
+          "heading": "Consider pen upgrades",
+          "description": "Pens can be upgraded and cash can be earned while riding. Read the currently displayed upgrade offer before choosing how to spend currency."
+        }
+      ],
+      "paragraphs": [
+        "These are useful progression stages, not an undocumented promise about how many times you must interact or exactly when each option unlocks. In the first session, try to identify your Grip display, a riding prompt, and the location of the ranch in your own interface. If a guide asserts an exact button, level requirement, timer, or success percentage, ask whether it shows current footage of this exact Roblox experience.",
+        "Training and ranch decisions are related but different. Grip is the stat specifically tied to the Dino Machines; pens and cash belong to the ranch loop. A player having trouble completing a ride should examine the riding prompts and Grip training first, while a player who has already collected dinosaurs can focus on the visible pen and cash options."
+      ]
+    },
+    {
+      "id": "grip",
+      "heading": "How to Train Grip in Ride a Dino",
+      "paragraphs": [
+        "Training is a named feature of this game, not a trick borrowed from a similar Roblox title. The developer says, 'Train on the Dino Machines to build up your Grip.' A good first training check is to identify the actual machine prompt on screen, compare the displayed Grip state before and after an interaction, and confirm whether the game has registered progress.",
+        "Do not assume Grip increases by a fixed number or that a higher Grip value guarantees a particular dinosaur. The public description gives no threshold table, machine upgrade chart, or optimum training route. The focused guide explains how to compare attempts fairly, what to record, and how to troubleshoot without inventing controls."
+      ],
+      "links": [
+        {
+          "label": "Ride a Dino Grip Training Guide",
+          "slug": "grip-training",
+          "description": "Dino Machine overview, a before-and-after training checklist, and ride troubleshooting."
+        }
+      ]
+    },
+    {
+      "id": "dinosaurs",
+      "heading": "Ride a Dino Dinosaurs, Rarities and Eras",
+      "paragraphs": [
+        "The developer advertises more than 50 collectible dinosaur species, with rarity ranging from Common to Divine. Those two rarity names are established by the official description; an exact tier-by-tier species list is not. Secret Dinos are mentioned as occasional appearances, without publicly documented spawn locations or times.",
+        "If you are building your collection, use each creature's precise label and any rarity that appears in the actual game. Record where you encountered it and verify whether it later appears in your ranch or collection interface. This makes a repeatable reference instead of an impressive-looking but fabricated list.",
+        "The official examples of eras include Plains, Desert, Jungle, Snow, and Volcano. They help describe the game's environments, but they do not establish a fixed progression order, entrance requirement, or location for any particular dinosaur. For now this overview is the honest starting point for collection research."
+      ]
+    },
+    {
+      "id": "ranch",
+      "heading": "Ranch, Pens and Cash Progression",
+      "paragraphs": [
+        "Once a dinosaur has been successfully tamed, the official description points players toward their ranch. It explicitly mentions upgrading pens and earning cash while riding. It does not provide the number of slots per pen, the best pen investment, an offline earnings rate, or a universal storage button.",
+        "Make a ranch decision with information you can see: the available pen option, its displayed cost, its described benefit, and the amount of currency currently shown. Keep any observed earning comparison tied to the same activity and duration so you don't mistake unrelated rewards for the effect of a pen upgrade.",
+        "The ranch guide separates confirmed game mechanics from practical steps for checking the live UI. It also explains why advice for egg-hatching or mutations from the other Ride a Dino title can produce completely incorrect expectations here."
+      ],
+      "links": [
+        {
+          "label": "Ride a Dino Ranch Guide",
+          "slug": "ranch",
+          "description": "Pens, cash, collection confirmation and upgrade comparison checklist."
+        }
+      ]
+    },
+    {
+      "id": "taming",
+      "heading": "How to Tame Dinosaurs in Ride a Dino",
+      "paragraphs": [
+        "The developer describes jumping onto running dinosaurs, riding them through the canyon, and taming them for your collection. That confirms the broad objective. It does not establish a cross-platform keyboard shortcut, a fixed sequence of key presses, or an exact success notification.",
+        "Before an attempt, check the actual target and the current on-screen riding prompt, along with any Grip information the game offers. After the attempt, look for a visible change to your collection or ranch state. A detailed taming walkthrough should not be treated as authoritative unless it demonstrates at least one complete successful run in the correct game."
+      ]
+    },
+    {
+      "id": "sources",
+      "heading": "Game Source and Last Review",
+      "paragraphs": [
+        "The primary source for the identity, developer, supported devices, Grip machines, ranch, era count and dinosaur collection scope is the official Roblox listing: https://www.roblox.com/games/93523763376122/Ride-a-Dino (reviewed October 18, 2026). The official Place ID distinguishes this game from the separate Ride a Dino experience by Dino Riders!.",
+        "This is an independent guide. Roblox and the game creator control the gameplay and may change mechanics. Statements about exact dinosaur names, prices, control mappings or machine efficiency require observed current-game evidence; they have not been supplied by the public game description and are not asserted as facts here."
       ]
     }
   ],
-  "faq": [],
+  "faq": [
+    {
+      "question": "Where do I play the real Ride a Dino Roblox game?",
+      "answer": "Use the official Roblox link for Place ID 93523763376122, developed by and Catch Them All. A separate Roblox game also uses the Ride a Dino name."
+    },
+    {
+      "question": "How do I increase Grip in Ride a Dino?",
+      "answer": "The developer confirms Dino Machines build Grip. Use the actual interaction prompts in your game and the Grip Training guide to check your progress."
+    },
+    {
+      "question": "How many dinosaurs are in Ride a Dino?",
+      "answer": "The official description says more than 50 collectible species, ranging from Common to Divine. This does not amount to a verified complete species list."
+    },
+    {
+      "question": "How does the ranch work?",
+      "answer": "The developer says you can bring collected dinosaurs home, upgrade pens, and earn cash while riding. Exact costs, capacity and earning rates must be checked in-game."
+    },
+    {
+      "question": "Are Secret Dinos available?",
+      "answer": "Yes. The developer mentions occasional Secret Dinos but doesn't state an exact spawn timer or chance in the public description."
+    },
+    {
+      "question": "Does Ride a Dino have codes?",
+      "answer": "The developer's public description used here does not establish an official redemption system or any active codes; this guide does not publish speculative codes."
+    }
+  ],
   "screenshots": [],
   "lastReviewed": "2026-10-18"
 }

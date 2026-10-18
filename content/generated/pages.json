@@ -1,1 +1,413 @@
-[]
+[
+  {
+    "enabled": true,
+    "slug": "grip-training",
+    "pageType": "guide",
+    "navLabel": "Grip Training",
+    "title": "Ride a Dino Grip Training Guide & Dino Machines",
+    "description": "Learn how Grip training works in Ride a Dino, where Dino Machines fit into progression, and what to check before attempting a tougher dinosaur.",
+    "navVisible": true,
+    "hero": {
+      "eyebrow": "Grip • Dino Machines",
+      "heading": "Ride a Dino Grip Training Guide",
+      "lead": "The developer confirms that Dino Machines build Grip. Check the machine's in-game prompt and compare your current Grip state before and after training, then decide whether to try another dinosaur ride."
+    },
+    "sections": [
+      {
+        "id": "quick-answer",
+        "heading": "How to Train Grip in Ride a Dino",
+        "intro": "Dino Machines are the developer-confirmed way to build Grip in the correct Roblox Ride a Dino game.",
+        "paragraphs": [
+          "Ride a Dino by and Catch Them All describes Dino Machines as the way to build up Grip. Grip training is part of the same loop as jumping onto dinosaurs and riding them through the canyon. The official public description does not, however, specify where every machine sits, what buttons to press, how much Grip each action gives or the Grip value needed for each dinosaur.",
+          "Open the correct Roblox experience (Place ID 93523763376122), look for the Dino Machine feature in your own game, and read the prompt it actually shows. Record the Grip display before and after a completed training action. A change shown by the game is useful evidence that the interaction worked; without it, don't claim the machine offers a certain number of points.",
+          "On desktop, mobile or console, prompts may differ. The developer lists support for all these platforms, but that does not make a keyboard shortcut reliable on every device. Following the live interface is safer than copying a button sequence from another Ride a Dino game."
+        ],
+        "table": {
+          "caption": "Practical Grip-training checkpoint",
+          "columns": [
+            "Check",
+            "What to look for",
+            "Why it helps"
+          ],
+          "rows": [
+            [
+              "Correct experience",
+              "Roblox Place ID 93523763376122",
+              "Avoid advice for a different game"
+            ],
+            [
+              "Dino Machine",
+              "Actual in-game label and interaction prompt",
+              "Identify the intended training feature"
+            ],
+            [
+              "Grip display",
+              "Current value or visible progress, if shown",
+              "Make a before-and-after comparison"
+            ],
+            [
+              "Training interaction",
+              "Completion feedback on your screen",
+              "Separate a finished action from an interrupted one"
+            ],
+            [
+              "Next ride",
+              "Any target-specific requirements actually displayed",
+              "Decide whether to train again"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "meaning",
+        "heading": "What Is Grip in Ride a Dino?",
+        "paragraphs": [
+          "Grip is explicitly named in the developer's explanation of training. The game pairs improving Grip with the act of riding and collecting dinosaurs, so it is a sensible progression target between difficult ride attempts. That connection is public; a detailed rule such as 'every 100 Grip adds 10 seconds' is not.",
+          "Do not confuse Grip with movement speed or a pet's hatchable stat. A separate Roblox game called Ride a Dino centers on finding eggs and improving dinosaur speed. The game covered here is by and Catch Them All and its developer describes Dino Machines, eras, a ranch and pens instead.",
+          "Players seeking to increase Grip usually have two distinct needs. One is understanding which feature trains it; the answer is Dino Machines. The second is knowing how much to train before attempting a particular dinosaur. That second question can only be answered accurately with current UI requirements or repeatable gameplay observations for that target."
+        ],
+        "subsections": [
+          {
+            "heading": "Grip and difficult dinosaur rides",
+            "paragraphs": [
+              "If you cannot complete a ride, check what the game says about your current Grip and target. You may need more training, but failure by itself does not establish a precise requirement. The same attempt could involve controls, timing or a misunderstood on-screen condition. Do not label an unobserved cause as confirmed."
+            ]
+          },
+          {
+            "heading": "What counts as real Grip progress?",
+            "paragraphs": [
+              "A stat indicator that changes after a completed Dino Machine action is more useful than an unsupported community estimate. A screenshot of the same display before and after helps distinguish a repeatable result from a guess or a different game's mechanic."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "machines",
+        "heading": "Dino Machines: A Training Walkthrough",
+        "intro": "These are observation-based steps, not invented universal input commands.",
+        "steps": [
+          {
+            "heading": "Identify the training feature",
+            "description": "In the game by and Catch Them All, locate the Dino Machine UI or model and read its visible interaction prompt. Confirm you are not in the other same-name experience."
+          },
+          {
+            "heading": "Follow the live prompt",
+            "description": "Use the input shown by the current device and let the interaction complete. Desktop, tablet, mobile and console need not share the same controls."
+          },
+          {
+            "heading": "Compare the result",
+            "description": "Note the displayed Grip state before and after the interaction. If the screen shows a change, keep that observation for your next ride decision."
+          }
+        ],
+        "paragraphs": [
+          "The game's public listing establishes the purpose of Dino Machines, but it does not publish a device-by-device action sequence. If you arrive and cannot immediately see a machine, read any available in-game tutorial or interface direction rather than assuming an exact location invented by a wiki. A published route should include a current game screenshot before it becomes a verified instruction.",
+          "If a training result seems inconsistent, keep the same conditions as far as possible. Are you using the same machine and the same Grip display? Was the action completed? Were any upgrades or temporary bonuses active? These questions are practical checks; they are not claims that Ride a Dino definitely has particular cooldowns or boosts."
+        ]
+      },
+      {
+        "id": "efficiency",
+        "heading": "How to Increase Grip Efficiently",
+        "paragraphs": [
+          "An efficient training method depends on results you can actually measure. Compare two similar completed attempts with the same available machine and note the progress displayed. If the game shows machine options with different costs, compare those descriptions before spending. Avoid an unverified 'fastest Dino Machine' ranking based on a single undocumented number.",
+          "A useful comparison record includes the machine's exact displayed name, the Grip display before training, the Grip display afterward, and a rough count of completed interactions or elapsed time. If only a progress bar is visible, record that rather than inventing a value. Repeat an observation before assuming its result is typical.",
+          "Keep cash spending separate from training efficiency. The game's ranch loop also uses cash and upgrades, but the published description gives no machine price list or pen upgrade formula. When comparing options, use the currently displayed offers; an old guide may describe prices that no longer apply."
+        ],
+        "table": {
+          "caption": "How to compare two training attempts",
+          "columns": [
+            "Record",
+            "Attempt A",
+            "Attempt B"
+          ],
+          "rows": [
+            [
+              "Machine label",
+              "Copy visible label",
+              "Copy visible label"
+            ],
+            [
+              "Grip before",
+              "From your display",
+              "From your display"
+            ],
+            [
+              "Grip after",
+              "From your display",
+              "From your display"
+            ],
+            [
+              "Actions or time",
+              "Observed",
+              "Observed"
+            ],
+            [
+              "Upgrade changed?",
+              "Note actual change",
+              "Note actual change"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "requirements",
+        "heading": "Grip Requirements and Failed Rides",
+        "paragraphs": [
+          "There is no official per-dinosaur Grip requirement chart in the developer's public listing. A requirement claimed by another site might be useful only if accompanied by the correct game's actual interface and a date. Dinosaur rarity alone is not enough to calculate a number from the Common-to-Divine range.",
+          "When an attempt fails, ask first whether the intended ride began and what instructions appeared. Next, check for any visible stat requirement and your current training state. Finally, distinguish successful riding from successful taming: the developer's game loop includes collecting dinosaurs and bringing them to the ranch, so completing one interaction does not automatically prove the entire cycle is finished.",
+          "Treat this as a decision path, not a claim about hidden failure codes: if the game explicitly displays a higher requirement, train and compare again; if the prompt was not completed, follow it as displayed; if the ride was completed but the collection is not visible, inspect the ranch rather than adding an unsupported Grip threshold."
+        ]
+      },
+      {
+        "id": "progression",
+        "heading": "When to Train Again and What to Do Next",
+        "paragraphs": [
+          "Training matters because the developer places Dino Machines and Grip before riding and collecting. The point at which a specific player can attempt a more difficult dinosaur is not stated publicly, so a single threshold for every player would be misleading. Use visible target information and recent training feedback as your guide.",
+          "If you have successfully collected a dinosaur, the next confirmed part of the official loop is bringing it home and considering ranch pens. The separate ranch page addresses pen decisions and cash observations rather than repeating the Dino Machine guide. If you are still exploring, the home guide covers the nine-era scope and the developer's 50+ species claim."
+        ],
+        "links": [
+          {
+            "label": "Ride a Dino Ranch and Pens",
+            "slug": "ranch",
+            "description": "What to check after collecting a dinosaur and before a pen upgrade."
+          }
+        ]
+      },
+      {
+        "id": "sources",
+        "heading": "Official Grip Source",
+        "paragraphs": [
+          "Source: the official Roblox game page for Ride a Dino by and Catch Them All, https://www.roblox.com/games/93523763376122/Ride-a-Dino, checked October 18, 2026. It explicitly says to train on Dino Machines to build Grip, and describes riding dinosaurs across a canyon.",
+          "This guide gives confirmed high-level mechanics and a repeatable way to inspect your own training. It does not present guessed machine levels, in-game buttons, bonus percentages or requirements as facts. For the game overview, return to the Ride a Dino wiki home page."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "How do I train Grip in Ride a Dino?",
+        "answer": "The developer says Dino Machines build Grip. Find the training feature in the correct Roblox experience and follow the live on-screen prompt for your device."
+      },
+      {
+        "question": "Where is the fastest Dino Machine?",
+        "answer": "An exact best-machine location or gain rate is not published in the official description. Compare actual visible training results before relying on a ranking."
+      },
+      {
+        "question": "Why can't I tame a dinosaur after training?",
+        "answer": "Check the current riding prompt and any requirements the game displays. Failure alone doesn't establish an exact Grip threshold or a specific hidden mechanic."
+      },
+      {
+        "question": "Does Grip training work on mobile?",
+        "answer": "The developer lists mobile among supported platforms. Mobile controls should be read from the current game screen rather than copied from a desktop walkthrough."
+      },
+      {
+        "question": "Does the ranch increase Grip?",
+        "answer": "The developer specifically names Dino Machines for Grip training. The ranch is associated with bringing dinosaurs home, pens and earning cash while riding."
+      }
+    ],
+    "relatedSlugs": [
+      "ranch"
+    ],
+    "lastReviewed": "2026-10-18"
+  },
+  {
+    "enabled": true,
+    "slug": "ranch",
+    "pageType": "guide",
+    "navLabel": "Ranch",
+    "title": "Ride a Dino Ranch Guide: Pens, Upgrades & Cash",
+    "description": "Understand the Ride a Dino ranch loop, pens, dinosaur storage and cash upgrades. Use verified observations to plan which improvement comes next.",
+    "navVisible": true,
+    "hero": {
+      "eyebrow": "Ranch • Pens • Cash",
+      "heading": "Ride a Dino Ranch and Pen Upgrade Guide",
+      "lead": "The developer says to bring tamed dinosaurs home to your ranch, upgrade pens and earn cash while riding. Use current in-game offers and collection status to decide your next step."
+    },
+    "sections": [
+      {
+        "id": "quick-answer",
+        "heading": "How the Ride a Dino Ranch Works",
+        "intro": "The ranch is the home for collected dinosaurs and an upgrade point in the game's progression loop.",
+        "paragraphs": [
+          "Ride a Dino by and Catch Them All is built around riding and taming dinosaurs, then taking them home to a ranch. The developer's Roblox description directly mentions pen upgrades and earning cash while you ride. These are the features this page explains. It does not claim that every dinosaur produces a fixed amount of passive income or that pens all follow a particular upgrade table.",
+          "Start by checking whether your riding attempt actually registered as a tame. Then look at the currently visible ranch interface and available pen options. If an offer has a cash cost, read the benefit displayed by the game before making the purchase. This is a more dependable approach than following old prices or a 'best ranch build' list from an unrelated Roblox simulator.",
+          "The correct experience uses Place ID 93523763376122 and is developed by and Catch Them All. Do not confuse it with the other game named Ride a Dino by Dino Riders!, which uses a separate dinosaur egg-hatching and speed system."
+        ],
+        "table": {
+          "caption": "Ranch progression facts and player checks",
+          "columns": [
+            "System",
+            "Officially described",
+            "Useful in-game check"
+          ],
+          "rows": [
+            [
+              "Tamed dinosaurs",
+              "Bring them home to your ranch",
+              "Check whether the completed tame appears in the current collection or ranch UI"
+            ],
+            [
+              "Pens",
+              "Pens can be upgraded",
+              "Read the available option's name, cost and described change"
+            ],
+            [
+              "Cash",
+              "Earn cash while riding",
+              "Compare your visible balance during a consistent activity"
+            ],
+            [
+              "Grip training",
+              "Dino Machines build Grip",
+              "Use training when your immediate issue is riding, not ranch capacity"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "collection",
+        "heading": "Bring Your Dinosaur Back to the Ranch",
+        "paragraphs": [
+          "The published game description connects taming with returning dinosaurs to your ranch. It does not spell out a universal 'deposit' button, slot assignment flow, or success notification for every platform. For that reason, the first useful distinction is between attempting a ride and successfully adding a dinosaur to the collection.",
+          "After an apparently successful tame, review whichever ownership or ranch state is actually visible in your session. Look for the dinosaur's in-game name and any confirmation or changed pen state. If nothing changes, consult the game's current prompts rather than assuming your dinosaur was automatically stored. A guide cannot safely name a specific storage menu or button until it has been observed in this exact game.",
+          "If you track your collection yourself, record the exact displayed dinosaur name, the date, and a screenshot or description of the completed ranch state. That is especially helpful with occasional Secret Dinos, because the official listing does not publish a complete roster or spawn timer. A screenshot from another game's egg inventory does not verify a ranch entry here."
+        ],
+        "subsections": [
+          {
+            "heading": "How to tell a ride from a completed tame",
+            "paragraphs": [
+              "A ride is an event you attempt; a completed tame should produce an observable result in the game. The developer mentions both riding and collecting, but it does not publish the exact completion UI. Use the game's actual ownership or pen state as the final confirmation rather than an assumed animation or message."
+            ]
+          },
+          {
+            "heading": "Use the correct game's ranch",
+            "paragraphs": [
+              "The other Ride a Dino title emphasizes Dino Eggs, hatching, mutations and speed. Those descriptions are not evidence for this game's pens. Always compare the Place ID and developer before using screenshots or control guides from a search result."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pens",
+        "heading": "How Pens and Ranch Capacity Work",
+        "paragraphs": [
+          "Pens are explicitly named by the Ride a Dino developer as upgrades. The public description does not disclose how many pens players start with, how many dinosaurs a pen holds, whether pens have individually named tiers or how costs scale. A detailed table of capacities without a current game capture would be fabricated.",
+          "Look at the actual pen or ranch interaction in your session. If it shows a level, price, capacity or upgrade effect, write those details down exactly as displayed and keep their units intact. A capacity value is not interchangeable with the number of species in the developer's 50+ collection promise.",
+          "Before upgrading, identify the problem you are solving. If your visible storage is limited and the next upgrade clearly improves that limit, a pen upgrade may be relevant. If your immediate difficulty is completing a dinosaur ride, Dino Machine training addresses a different part of the loop. The game description makes the distinction, even though it does not publish a spending priority list."
+        ],
+        "table": {
+          "caption": "Checklist before spending cash on a pen",
+          "columns": [
+            "Question",
+            "What makes the answer reliable"
+          ],
+          "rows": [
+            [
+              "Which pen is available?",
+              "Its current in-game label"
+            ],
+            [
+              "What does the upgrade cost?",
+              "A price shown in the actual ranch UI"
+            ],
+            [
+              "What improvement is offered?",
+              "Visible upgrade text or an observed before/after difference"
+            ],
+            [
+              "Will the change help now?",
+              "An actual space or progression need in your session"
+            ],
+            [
+              "Could Grip training be a better next step?",
+              "Your current ride goal and the Dino Machine options you can see"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "buy-first",
+        "heading": "Ranch Upgrades: What to Buy First",
+        "intro": "A good upgrade decision starts with the next visible offer, not a guessed optimal order.",
+        "steps": [
+          {
+            "heading": "Inspect your ranch offer",
+            "description": "Open the relevant current-game interface and read the displayed pen or ranch upgrade price and description."
+          },
+          {
+            "heading": "Identify the bottleneck",
+            "description": "Decide whether your current problem is storing collected dinosaurs, earning currency, or completing another ride."
+          },
+          {
+            "heading": "Compare the options you can see",
+            "description": "Spend based on an observed benefit and the actual cash balance. Recheck the new state after buying before generalizing its effect."
+          }
+        ],
+        "paragraphs": [
+          "A 'first upgrade' recommendation is only meaningful with real prices, capacities and starting conditions. None of those values is listed on the official game page used for this guide. That is why this page does not rank hypothetical pen tiers or make promises about payback time.",
+          "If you want to compare two available choices, keep a note of the exact displayed costs, their stated benefits and your current goal. You can then make a reasoned choice without pretending that every player starts at the same level or has the same currency.",
+          "Do not assume upgrading a pen automatically increases Grip. The developer names Dino Machines as the training feature and pens as part of ranch progression. When a ride is the immediate obstacle, look at training before treating a ranch purchase as a universal fix."
+        ]
+      },
+      {
+        "id": "cash",
+        "heading": "How to Earn Cash While Riding",
+        "paragraphs": [
+          "The Ride a Dino listing explicitly says to 'earn cash while you ride.' It does not say that every dinosaur generates a published per-second rate, that higher rarity guarantees a fixed multiplier, or that ranch earnings continue while you are offline.",
+          "To understand how your own balance changes, note the cash display before a short activity and again afterward. Record which activity you completed and whether another reward or upgrade took place. When several things change together, you cannot safely attribute the difference to one dinosaur or one pen.",
+          "If the current game has a comparison view, trust what it actually displays over a site that gives exact cash rates with no date or supporting screenshot. Prices, events and mechanics may change. Without evidence, writing a sophisticated-looking earnings table could cost players their in-game resources.",
+          "You can also check whether collecting a different dinosaur changes the displayed ranch state, but do not assume that '50+ species' means 50+ unique cash outputs. That count is about collectible species, not an economic formula."
+        ]
+      },
+      {
+        "id": "troubleshooting",
+        "heading": "Ranch Troubleshooting and Common Mistakes",
+        "paragraphs": [
+          "If a dinosaur seems missing, first verify that the correct experience is open, that the ride ended in a completed tame, and that you are looking at the current collection or ranch screen. These are sensible checks. They are not proof of a specific storage bug, lost-dinosaur cooldown, or refund rule.",
+          "If you cannot afford a pen upgrade, compare the price you actually see against your visible balance and read any additional requirement displayed by the game. Do not depend on an undocumented unlock order. On mobile or console, follow the controls presented by the game rather than assuming a desktop interaction key.",
+          "Be wary of search results advertising auto-sell, auto-tame or external executor scripts. Their descriptions may mention ranch or pens but they are not reliable, verified instructions for normal play. This independent guide does not ask you to install scripts, reveal Roblox credentials, or trade away account items.",
+          "After dealing with the ranch, return to the next player goal. If you have space and want another dinosaur, consider your Grip and the ride prompts. If you need more cash, observe the earnings that the game actually shows while riding. Keeping a consistent sequence is more useful than guessing invisible mechanics."
+        ],
+        "links": [
+          {
+            "label": "Grip Training on Dino Machines",
+            "slug": "grip-training",
+            "description": "Review the separate riding-related training system before your next attempt."
+          }
+        ]
+      },
+      {
+        "id": "source",
+        "heading": "Ranch Sources and Update Notes",
+        "paragraphs": [
+          "Primary source: the official Roblox listing for Ride a Dino by and Catch Them All at https://www.roblox.com/games/93523763376122/Ride-a-Dino, reviewed October 18, 2026. It confirms taming and collecting species, bringing them home to a ranch, pen upgrades and cash while riding.",
+          "Exact deposit controls, pen capacity, upgrade prices and income rates require current in-game observations. This guide avoids publishing those details as established facts until supported by such observations. See the Ride a Dino wiki overview for the complete developer-described gameplay loop."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What is the ranch in Ride a Dino?",
+        "answer": "The official developer describes it as the place to bring home tamed dinosaurs and upgrade pens while building cash through riding."
+      },
+      {
+        "question": "How do I put a dinosaur in a pen?",
+        "answer": "Confirm that the dinosaur was successfully tamed, then follow the current ranch or collection interface. An exact universal deposit button is not established by the official public listing."
+      },
+      {
+        "question": "What pen should I upgrade first?",
+        "answer": "Check the actual displayed price and benefit, then prioritize the constraint you can observe. The official description does not provide a verified best-upgrade order."
+      },
+      {
+        "question": "Does Ride a Dino have offline cash income?",
+        "answer": "The developer mentions earning cash while riding, not a guaranteed offline rate. Don't assume offline earnings without direct game evidence."
+      },
+      {
+        "question": "Should I buy pens or train Grip?",
+        "answer": "Pens belong to ranch progression; Dino Machines are the described way to increase Grip. Choose based on whether your current goal is ranch space or another dinosaur ride."
+      }
+    ],
+    "relatedSlugs": [
+      "grip-training"
+    ],
+    "lastReviewed": "2026-10-18"
+  }
+]

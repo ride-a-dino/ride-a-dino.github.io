@@ -14,7 +14,7 @@ import "./globals.css";
 
 export const metadata = rootMetadata();
 
-const navLinks = visibleCorePages.map((page) => ({ label: page.navLabel, slug: page.slug }));
+const navLinks = [{ label: "Home", slug: "" }, ...visibleCorePages.map((page) => ({ label: page.navLabel, slug: page.slug }))];
 const legalLinks = enabledLegalPages.map((page) => ({ label: page.navLabel, slug: page.slug }));
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {

@@ -52,7 +52,7 @@ export function homeSchemas(page: HomePageDefinition): Schema[] {
       genre: siteConfig.game.genre,
       gamePlatform: siteConfig.game.platform,
       author: { "@type": "Organization", name: siteConfig.game.developer },
-      url: absoluteUrl(),
+      url: siteConfig.game.officialUrl ?? absoluteUrl(),
     },
     faqSchema(page.faq),
   ];

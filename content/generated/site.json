@@ -1,8 +1,8 @@
 {
-  "readyForLaunch": false,
-  "siteName": "Ride a Dino Guide",
+  "readyForLaunch": true,
+  "siteName": "Ride a Dino Wiki & Guide",
   "shortName": "Ride a Dino",
-  "description": "Ride a Dino guides, walkthroughs, tips, updates, and reference information.",
+  "description": "An independent guide to Ride a Dino Roblox: Dino Machines, Grip training, dinosaurs, ranch pens and cash progression.",
   "language": "en",
   "locale": "en_US",
   "authorName": "Editorial Team",
@@ -54,11 +54,11 @@
   "game": {
     "name": "Ride a Dino",
     "platform": "Roblox",
-    "developer": "",
-    "genre": "",
-    "officialUrl": "https://www.roblox.com/games/93523763376122"
+    "developer": "and Catch Them All",
+    "genre": "Dinosaur riding and collection",
+    "officialUrl": "https://www.roblox.com/games/93523763376122/Ride-a-Dino"
   },
   "seo": {
-    "titleTemplate": "%s | Ride a Dino Guide"
+    "titleTemplate": "%s"
   }
 }
