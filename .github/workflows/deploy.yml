@@ -56,3 +56,49 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Verify public site after deployment
+        env:
+          SITE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          python3 - <<'PY'
+          import os, re, time, urllib.request
+          base = os.environ["SITE_URL"].rstrip("/") + "/"
+          assert base == "https://ride-a-dino.github.io/", f"Unexpected domain: {base}"
+          def fetch(path, expected_text):
+              url = base + path.lstrip("/")
+              last_error = None
+              for attempt in range(12):
+                  try:
+                      request = urllib.request.Request(url, headers={"User-Agent": "RideADinoSiteHealthCheck/1.0"})
+                      with urllib.request.urlopen(request, timeout=15) as response:
+                          status, content = response.status, response.read().decode("utf-8")
+                      if status != 200 or expected_text not in content:
+                          raise AssertionError(f"{url}: status={status}; expected content missing")
+                      return content
+                  except Exception as error:
+                      last_error = error
+                      if attempt < 11:
+                          time.sleep(5)
+              raise RuntimeError(f"Public verification failed for {url}: {last_error}")
+          pages = {
+              "": "Ride a Dino Wiki and Beginner Guide",
+              "grip-training/": "Ride a Dino Grip Training Guide",
+              "ranch/": "Ride a Dino Ranch and Pen Upgrade Guide"
+          }
+          for path, heading in pages.items():
+              html = fetch(path, heading)
+              expected_url = base + path
+              assert f'href="{expected_url}"' in html, f"Canonical not found in {path or '/'}"
+              assert len(re.findall(r'<h1\b', html, flags=re.I)) == 1, f"Expected one H1 in {path or '/'}"
+              assert "G-FKWD73D38M" in html, f"GA4 missing from {path or '/'}"
+              assert "grip-training/" in html and "ranch/" in html, f"Internal navigation missing from {path or '/'}"
+              assert not any(term in html for term in ("Yorich", "Codex", "ChatGPT", "Gator Dragon Games")), f"Unexpected template text in {path or '/'}"
+              print(f"Verified HTTP 200, H1, canonical, GA4 and navigation: {expected_url}")
+          robots = fetch("robots.txt", "Allow: /")
+          assert "Sitemap: https://ride-a-dino.github.io/sitemap.xml" in robots
+          sitemap = fetch("sitemap.xml", "<urlset")
+          assert all(base + path in sitemap for path in pages), "Ready URLs missing from sitemap"
+          assert "/dinosaurs/" not in sitemap and "/how-to-tame-dinos/" not in sitemap, "Non-READY pages should not be indexed"
+          print("Verified public robots.txt and sitemap.xml")
+          PY
