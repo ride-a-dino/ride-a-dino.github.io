@@ -141,6 +141,13 @@
         "The developer advertises more than 50 collectible dinosaur species, with rarity ranging from Common to Divine. Those two rarity names are established by the official description; an exact tier-by-tier species list is not. Secret Dinos are mentioned as occasional appearances, without publicly documented spawn locations or times.",
         "If you are building your collection, use each creature's precise label and any rarity that appears in the actual game. Record where you encountered it and verify whether it later appears in your ranch or collection interface. This makes a repeatable reference instead of an impressive-looking but fabricated list.",
         "The official examples of eras include Plains, Desert, Jungle, Snow, and Volcano. They help describe the game's environments, but they do not establish a fixed progression order, entrance requirement, or location for any particular dinosaur. For now this overview is the honest starting point for collection research."
+      ],
+      "links": [
+        {
+          "label": "Ride a Dino Dinosaurs List",
+          "slug": "dinosaurs",
+          "description": "Explore dinosaur names, Common-to-Divine rarity, Secret Dinos and eras."
+        }
       ]
     },
     {
@@ -165,6 +172,13 @@
       "paragraphs": [
         "The developer describes jumping onto running dinosaurs, riding them through the canyon, and taming them for your collection. That confirms the broad objective. It does not establish a cross-platform keyboard shortcut, a fixed sequence of key presses, or an exact success notification.",
         "Before an attempt, check the actual target and the current on-screen riding prompt, along with any Grip information the game offers. After the attempt, look for a visible change to your collection or ranch state. A detailed taming walkthrough should not be treated as authoritative unless it demonstrates at least one complete successful run in the correct game."
+      ],
+      "links": [
+        {
+          "label": "How to Tame Dinos",
+          "slug": "how-to-tame-dinos",
+          "description": "A step-by-step Grip, riding, taming and ranch progression guide."
+        }
       ]
     },
     {

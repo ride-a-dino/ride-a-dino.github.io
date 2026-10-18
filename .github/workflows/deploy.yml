@@ -84,7 +84,9 @@ jobs:
           pages = {
               "": "Ride a Dino Wiki and Beginner Guide",
               "grip-training/": "Ride a Dino Grip Training Guide",
-              "ranch/": "Ride a Dino Ranch and Pen Upgrade Guide"
+              "ranch/": "Ride a Dino Ranch and Pen Upgrade Guide",
+              "dinosaurs/": "Ride a Dino Dinosaurs List and Rarity Guide",
+              "how-to-tame-dinos/": "How to Tame Dinos in Ride a Dino"
           }
           footers = []
           for path, heading in pages.items():
@@ -102,11 +104,10 @@ jobs:
               assert not any(term in html for term in ("Yorich", "Codex", "ChatGPT", "Gator Dragon Games")), f"Unexpected template text in {path or '/'}"
               print(f"Verified HTTP 200, H1, canonical, GA4 and navigation: {expected_url}")
           assert len(set(footers)) == 1, "Footer contents differ between home and inner pages"
-          print("Verified identical global footer on all 3 READY pages")
+          print("Verified identical global footer on all 5 READY pages")
           robots = fetch("robots.txt", "Allow: /")
           assert "Sitemap: https://ride-a-dino.github.io/sitemap.xml" in robots
           sitemap = fetch("sitemap.xml", "<urlset")
           assert all(base + path in sitemap for path in pages), "Ready URLs missing from sitemap"
-          assert "/dinosaurs/" not in sitemap and "/how-to-tame-dinos/" not in sitemap, "Non-READY pages should not be indexed"
           print("Verified public robots.txt and sitemap.xml")
           PY
