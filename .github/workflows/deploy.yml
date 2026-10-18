@@ -89,7 +89,7 @@ jobs:
           footers = []
           for path, heading in pages.items():
               html = fetch(path, heading)
-              footer = re.search(r"<footer\\b[^>]*>[\\s\\S]*?</footer>", html, flags=re.I)
+              footer = re.search(r"<footer[^>]*>.*?</footer>", html, flags=re.I | re.S)
               assert footer, f"Footer missing: {path or '/'}"
               assert html.lower().count("<footer") == 1, f"Duplicate Footer: {path or '/'}"
               assert "global-footer" in footer.group(0), f"Wrong Footer template: {path or '/'}"
