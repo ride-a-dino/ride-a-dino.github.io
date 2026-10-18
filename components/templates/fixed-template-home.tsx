@@ -4,19 +4,10 @@ import { JsonLd } from "@/components/site/json-ld";
 import { siteConfig } from "@/config/site";
 import { siteSkin } from "@/config/skin";
 import type { HomePageDefinition, InternalLink } from "@/config/types";
-import { visibleCorePages } from "@/content/registry";
-import { esc, renderFixedDocument } from "@/lib/fixed-template/render";
+import { enabledLegalPages, visibleCorePages } from "@/content/registry";
+import { renderFixedDocument, renderStructuredSections } from "@/lib/fixed-template/render";
 import { homeSchemas } from "@/lib/schema";
 import { assetPath, routePath } from "@/lib/urls";
-
-function supplement(home: HomePageDefinition): string {
-  const sections = home.sections.map((section) => {
-    const paragraphs = (section.paragraphs ?? []).map((paragraph) => `<p>${esc(paragraph)}</p>`).join("");
-    const intro = section.intro ? `<p>${esc(section.intro)}</p>` : "";
-    return `<section id="${esc(section.id)}"><h2>${esc(section.heading)}</h2>${intro}${paragraphs}</section>`;
-  }).join("");
-  return sections;
-}
 
 export function FixedTemplateHome({ home }: { home: HomePageDefinition }) {
   const skin = siteSkin();
@@ -35,12 +26,14 @@ export function FixedTemplateHome({ home }: { home: HomePageDefinition }) {
     gameName: siteConfig.game.name || siteConfig.shortName,
     nav: links.map((link) => ({ slug: link.slug, label: link.label, href: routePath(link.slug) })),
     homeHref: "/",
+    officialGameUrl: siteConfig.game.officialUrl,
+    legalLinks: enabledLegalPages.map(item => ({ slug: item.slug, label: item.navLabel, href: routePath(item.slug) })),
     logoUrl: assetPath(siteConfig.assets.logo),
     bannerUrl: assetPath(siteConfig.assets.cover),
     heading: home.hero.heading,
     lead: home.hero.lead,
     entries,
-    supplementHtml: supplement(home),
+    supplementHtml: renderStructuredSections(home.sections),
   });
   return (
     <>

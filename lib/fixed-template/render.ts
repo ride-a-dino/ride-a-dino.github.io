@@ -1,11 +1,13 @@
 import { accentOverrideCss, resolveAccent, templatePack, type TemplatePack, type TemplateSkin } from "./catalog";
 import { SPEC_HTML } from "./spec-html";
+import type { PageSection, DataTable } from "../../config/types";
 
 export interface TemplateLink { slug: string; label: string; href: string; }
 export interface TemplateEntry { href: string; title: string; text: string; }
 export interface FixedTemplateInput {
   preview?: boolean;
   legalLinks?: TemplateLink[];
+  officialGameUrl?: string | null;
   skin: TemplateSkin | string; page: "home" | "inner"; accentColorId?: string | null; gameName: string;
   nav: TemplateLink[]; currentSlug?: string | null; homeHref: string; logoUrl?: string | null; bannerUrl?: string | null;
   heading?: string | null; lead?: string | null; articleHtml?: string | null; entries?: TemplateEntry[] | null; supplementHtml?: string | null;
@@ -146,6 +148,48 @@ function replaceArticleBody(html:string,articleHtml:string):string{
 }
 function insertSupplement(html:string,supplement:string){if(html.includes("</main>"))return html.replace("</main>",`${supplement}</main>`);if(html.includes("<footer"))return html.replace("<footer",`${supplement}<footer`);return html.replace("</body>",`${supplement}</body>`)}
 
+
+function renderTable(table: DataTable): string {
+  const head = table.columns.map(column => `<th scope="col">${esc(column)}</th>`).join("");
+  const rows = table.rows.map(row => `<tr>${row.map(cell => `<td>${esc(cell)}</td>`).join("")}</tr>`).join("");
+  return `<div class="fixed-table-wrap"><table><caption>${esc(table.caption)}</caption><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+export function renderStructuredSections(sections: PageSection[]): string {
+  return sections.map(section => {
+    const paragraphs = (section.paragraphs ?? []).map(p => `<p>${esc(p)}</p>`).join("");
+    const intro = section.intro ? `<p class="lead">${esc(section.intro)}</p>` : "";
+    const subsections = (section.subsections ?? []).map(sub => `<div class="fixed-subsection"><h3>${esc(sub.heading)}</h3>${sub.paragraphs.map(p=>`<p>${esc(p)}</p>`).join("")}${sub.bullets?.length ? `<ul>${sub.bullets.map(item=>`<li>${esc(item)}</li>`).join("")}</ul>` : ""}${sub.table ? renderTable(sub.table) : ""}</div>`).join("");
+    const steps = section.steps?.length ? `<ol class="fixed-steps">${section.steps.map(step=>`<li><strong>${esc(step.heading)}</strong><p>${esc(step.description)}</p></li>`).join("")}</ol>` : "";
+    const links = section.links?.length ? `<div class="fixed-related-links">${section.links.map(link=>`<a href="/${safeAttr(slugOnly(link.slug))}/"><strong>${esc(link.label)}</strong>${link.description ? `<span>${esc(link.description)}</span>` : ""}</a>`).join("")}</div>` : "";
+    return `<section class="fixed-content-section" id="${safeAttr(section.id)}"><h2>${esc(section.heading)}</h2>${intro}${paragraphs}${subsections}${steps}${section.table ? renderTable(section.table) : ""}${links}</section>`;
+  }).join("");
+}
+function repairFixedTemplateChrome(html: string, input: FixedTemplateInput): string {
+  let next=html;
+  const navigation=[{label:"Home",href:input.homeHref},...input.nav,...(input.legalLinks??[])];
+  const cleanNavigation=navigation.filter((item,i,all)=>all.findIndex(x=>x.href===item.href)===i);
+  if (input.skin==="portal" && input.page==="home") {
+    const primary=input.nav[0];
+    const buttons=[
+      primary ? `<a class="btn primary" href="${safeAttr(primary.href)}">Start: ${esc(primary.label)}</a>` : "",
+      input.officialGameUrl ? `<a class="btn secondary" href="${safeAttr(input.officialGameUrl)}" rel="noopener noreferrer">Play Ride a Dino on Roblox ↗</a>` : ""
+    ].join("");
+    next=next.replace(/<div class="actions">[\s\S]*?<\/div>/,`<div class="actions">${buttons}</div>`);
+    next=next.replace(/<div class="eyebrow"><\/div>/,`<div class="eyebrow">INDEPENDENT ROBLOX WIKI</div>`);
+    next=next.replace(/<div class="section-head"><h2><\/h2><small><\/small><\/div>/,`<div class="section-head"><h2>Explore Ride a Dino Guides</h2><small>Choose a focused player task</small></div>`);
+    if(input.bannerUrl) next=next.replace(/<div class="cover-own">[\s\S]*?<\/div>/,`<div class="cover-own"><img class="template-banner-image" src="${safeAttr(input.bannerUrl)}" alt="Ride a Dino Roblox game cover"></div>`);
+  }
+  const links=`<a href="${safeAttr(input.homeHref)}">Home</a>${input.nav.map(l=>`<a href="${safeAttr(l.href)}">${esc(l.label)}</a>`).join("")}`;
+  const legal=(input.legalLinks??[]).map(l=>`<a href="${safeAttr(l.href)}">${esc(l.label)}</a>`).join("");
+  if(input.skin==="portal") {
+    const footer=`<footer class="global-footer"><div class="wrap global-footer-grid"><div><div class="global-footer-brand">${logoMarkup(input)}<strong>${esc(input.gameName)} Wiki</strong></div><p>Independent fan-made guide to the Roblox experience by and Catch Them All. Not affiliated with Roblox or the creator.</p></div><div><b>Explore</b>${links}</div><div><b>Site</b>${legal}</div></div></footer>`;
+    next=next.replace(/<footer class="global-footer">[\s\S]*?<\/footer>/,footer);
+  }
+  const innerFooter=`<footer class="template-inner-footer"><div><strong>${esc(input.gameName)} • Independent fan guide</strong><nav class="fixed-footer-links" aria-label="Footer navigation">${cleanNavigation.map(l=>`<a href="${safeAttr(l.href)}">${esc(l.label)}</a>`).join("")}</nav></div></footer>`;
+  next=next.replace(/<footer class="template-inner-footer">[\s\S]*?<\/footer>/,innerFooter);
+  return next;
+}
+
 export function renderFixedTemplate(input:FixedTemplateInput):string{
   const {pack,html:source}=templateSource(input.skin,input.page); const paint=resolveAccent(pack.skin,input.accentColorId);
   const currentLabel=input.page==="inner"?(input.nav.find(x=>slugOnly(x.slug)===slugOnly(input.currentSlug||""))?.label||input.heading||"Guide"):null;
@@ -160,6 +204,7 @@ export function renderFixedTemplate(input:FixedTemplateInput):string{
   if(input.page==="inner"&&input.articleHtml)html=replaceArticleBody(html,input.articleHtml);
   if(input.supplementHtml)html=insertSupplement(html,input.supplementHtml);
   html=applyCopy(html,input);
+  html=repairFixedTemplateChrome(html,input);
   html=html.replace(/--accent:#[0-9A-Fa-f]{6}/,`--accent:${paint.textAccent}`);
   html=html.replace("</style>",`${accentOverrideCss(pack.skin,paint)}</style>`);
   if(!/<body[^>]*data-template=/.test(html))html=html.replace(/<body([^>]*)>/,`<body$1 data-template="${pack.specId.replace(/^\d+-/,"")}">`);
@@ -177,5 +222,5 @@ export function scopeTemplateCss(css:string,scope:string):string{
     const brace=source.indexOf("{",index);if(brace<0)break;const selector=source.slice(index,brace).trim(),close=source.indexOf("}",brace);if(close<0)break;out+=scopeSelectorList(selector,scope)+"{"+source.slice(brace+1,close)+"}";index=close+1;
   }return out;
 }
-export function scopedTemplateCss(skin:string,accentColorId?:string|null):string{const {pack,html:home}=templateSource(skin,"home"),{html:inner}=templateSource(skin,"inner"),paint=resolveAccent(pack.skin,accentColorId);const raw=extractStyle(home)+"\\n"+extractStyle(inner)+"\\n"+accentOverrideCss(pack.skin,paint);return scopeTemplateCss(raw,`body[data-fixed-template="${pack.skin}"]`)}
+export function scopedTemplateCss(skin:string,accentColorId?:string|null):string{const {pack,html:home}=templateSource(skin,"home"),{html:inner}=templateSource(skin,"inner"),paint=resolveAccent(pack.skin,accentColorId);const raw=extractStyle(home)+"\\n"+extractStyle(inner)+"\\n"+accentOverrideCss(pack.skin,paint);return scopeTemplateCss(raw,`body[data-fixed-template="${pack.skin}"]`) + `\nbody[data-fixed-template="${pack.skin}"] .fixed-content-section{margin:34px 0;padding:0 0 24px;border-bottom:1px solid var(--line,#334155)}body[data-fixed-template="${pack.skin}"] .fixed-content-section h2{margin:0 0 14px;font-size:25px;line-height:1.25}body[data-fixed-template="${pack.skin}"] .fixed-content-section h3{margin:19px 0 8px;font-size:19px}body[data-fixed-template="${pack.skin}"] .fixed-content-section p,body[data-fixed-template="${pack.skin}"] .fixed-content-section li{line-height:1.75}body[data-fixed-template="${pack.skin}"] .fixed-content-section p{margin:13px 0}body[data-fixed-template="${pack.skin}"] .fixed-table-wrap{overflow-x:auto;margin:20px 0}body[data-fixed-template="${pack.skin}"] .fixed-table-wrap table{border-collapse:collapse;width:100%;font-size:14px}body[data-fixed-template="${pack.skin}"] .fixed-table-wrap caption{text-align:left;font-weight:bold;padding:10px}body[data-fixed-template="${pack.skin}"] .fixed-table-wrap th,body[data-fixed-template="${pack.skin}"] .fixed-table-wrap td{border:1px solid var(--line,#334155);padding:10px;min-width:110px;text-align:left}body[data-fixed-template="${pack.skin}"] .fixed-steps{display:grid;gap:12px;padding-left:23px}body[data-fixed-template="${pack.skin}"] .fixed-related-links{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0}body[data-fixed-template="${pack.skin}"] .fixed-related-links a{border:1px solid var(--line,#334155);border-radius:12px;padding:14px;max-width:360px}body[data-fixed-template="${pack.skin}"] .fixed-related-links span{display:block;font-size:13px;margin-top:8px;opacity:.8}body[data-fixed-template="${pack.skin}"] .fixed-footer-links{display:flex;flex-wrap:wrap;gap:15px;margin-top:15px}body[data-fixed-template="portal"] .header{height:auto;min-height:72px;flex-wrap:wrap;padding:12px 0}body[data-fixed-template="portal"] .nav{display:flex!important;flex-wrap:wrap;margin-left:auto}body[data-fixed-template="portal"] .nav-link{padding:8px 10px}@media(max-width:600px){body[data-fixed-template="portal"] .nav{margin-left:0;width:100%}}\n`}
 export function renderFixedDocument(input:FixedTemplateInput):{html:string;body:string;chrome:string;rest:string}{const html=renderFixedTemplate(input),body=extractBody(html),parts=splitFixedChrome(body,templatePack(input.skin).skin);return{html,body,...parts}}

@@ -4,21 +4,12 @@ import { siteConfig } from "@/config/site";
 import { siteSkin } from "@/config/skin";
 import type { SeoPageDefinition } from "@/config/types";
 import { enabledLegalPages, getRelatedPages, visibleCorePages } from "@/content/registry";
-import { esc, renderFixedDocument } from "@/lib/fixed-template/render";
+import { esc, renderFixedDocument, renderStructuredSections } from "@/lib/fixed-template/render";
 import { pageSchemas } from "@/lib/schema";
 import { assetPath, routePath } from "@/lib/urls";
 
 function articleInner(page: SeoPageDefinition): string {
-  const sections = page.sections.map((section) => {
-    const paragraphs = [
-      section.intro ? `<p>${esc(section.intro)}</p>` : "",
-      ...(section.paragraphs ?? []).map((paragraph) => `<p>${esc(paragraph)}</p>`),
-    ].join("");
-    const steps = section.steps?.length
-      ? `<ol>${section.steps.map((step) => `<li><b>${esc(step.heading)}</b> ${esc(step.description)}</li>`).join("")}</ol>`
-      : "";
-    return `<section id="${esc(section.id)}"><h2>${esc(section.heading)}</h2>${paragraphs}${steps}</section>`;
-  }).join("");
+  const sections = renderStructuredSections(page.sections);
   const faq = page.faq?.length
     ? `<section id="faq"><h2>FAQ</h2>${page.faq.map((item) => `<p><b>${esc(item.question)}</b> ${esc(item.answer)}</p>`).join("")}</section>`
     : "";
@@ -43,7 +34,7 @@ export function FixedTemplateInner({ page }: { page: SeoPageDefinition }) {
     currentSlug: page.slug,
     homeHref: skin === "arcade-play" ? assetPath("/") : "/",
     logoUrl: skin === "arcade-play" ? assetPath(siteConfig.assets.logo) : null,
-    ...(skin === "arcade-play" ? { legalLinks: enabledLegalPages.map((item) => ({ slug: item.slug, label: item.navLabel, href: assetPath(routePath(item.slug)) })) } : {}),
+    legalLinks: enabledLegalPages.map(item => ({ slug: item.slug, label: item.navLabel, href: skin === "arcade-play" ? assetPath(routePath(item.slug)) : routePath(item.slug) })),
     heading: page.hero.heading,
     lead: page.hero.lead,
     articleHtml: articleInner(page),
