@@ -1,13 +1,5 @@
-import { integrations } from "@/config/integrations";
-import { NativeAdClient } from "./native-ad-client";
-
+// Shared ad slot for any non-fixed page template. All loading is
+// owned by the single AdsterraManager in the root layout.
 export function NativeAdSlot() {
-  if (integrations.ads.provider !== "adsterra-native") return null;
-
-  return (
-    <NativeAdClient
-      scriptUrl={integrations.ads.scriptUrl}
-      containerId={integrations.ads.containerId}
-    />
-  );
+  return <div data-adsterra-native-slot="" className="adsterra-slot" />;
 }

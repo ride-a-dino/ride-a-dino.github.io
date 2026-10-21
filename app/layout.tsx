@@ -1,5 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import { Analytics } from "@/components/integrations/analytics";
+import { AdsterraManager } from "@/components/integrations/adsterra-manager";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { FixedTemplateHeader } from "@/components/templates/fixed-template-header";
@@ -49,6 +50,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         {fixed ? <FixedTemplateHeader links={navLinks} /> : <SiteHeader links={navLinks} />}
         <div id="main-content">{children}</div>
         <SiteFooter coreLinks={navLinks} legalLinks={legalLinks} />
+        <AdsterraManager />
       </body>
     </html>
   );

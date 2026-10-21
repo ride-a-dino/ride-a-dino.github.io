@@ -1,4 +1,3 @@
-import { NativeAdSlot } from "@/components/integrations/native-ad-slot";
 import { Faq } from "@/components/site/faq";
 import { JsonLd } from "@/components/site/json-ld";
 import { siteConfig } from "@/config/site";
@@ -39,7 +38,6 @@ export function FixedTemplateHome({ home }: { home: HomePageDefinition }) {
     <>
       <JsonLd data={homeSchemas(home)} />
       <div dangerouslySetInnerHTML={{ __html: rendered.rest }} />
-      <div className="site-container"><NativeAdSlot /></div>
       {home.faq.length ? (
         <div className="site-container"><Faq items={home.faq} /></div>
       ) : null}

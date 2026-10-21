@@ -207,4 +207,60 @@ export function scopeTemplateCss(css:string,scope:string):string{
   }return out;
 }
 export function scopedTemplateCss(skin:string,accentColorId?:string|null):string{const {pack,html:home}=templateSource(skin,"home"),{html:inner}=templateSource(skin,"inner"),paint=resolveAccent(pack.skin,accentColorId);const raw=extractStyle(home)+"\\n"+extractStyle(inner)+"\\n"+accentOverrideCss(pack.skin,paint);return scopeTemplateCss(raw,`body[data-fixed-template="${pack.skin}"]`) + `\nbody[data-fixed-template="${pack.skin}"] .fixed-content-section{margin:34px 0;padding:0 0 24px;border-bottom:1px solid var(--line,#334155)}body[data-fixed-template="${pack.skin}"] .fixed-content-section h2{margin:0 0 14px;font-size:25px;line-height:1.25}body[data-fixed-template="${pack.skin}"] .fixed-content-section h3{margin:19px 0 8px;font-size:19px}body[data-fixed-template="${pack.skin}"] .fixed-content-section p,body[data-fixed-template="${pack.skin}"] .fixed-content-section li{line-height:1.75}body[data-fixed-template="${pack.skin}"] .fixed-content-section p{margin:13px 0}body[data-fixed-template="${pack.skin}"] .fixed-table-wrap{overflow-x:auto;margin:20px 0}body[data-fixed-template="${pack.skin}"] .fixed-table-wrap table{border-collapse:collapse;width:100%;font-size:14px}body[data-fixed-template="${pack.skin}"] .fixed-table-wrap caption{text-align:left;font-weight:bold;padding:10px}body[data-fixed-template="${pack.skin}"] .fixed-table-wrap th,body[data-fixed-template="${pack.skin}"] .fixed-table-wrap td{border:1px solid var(--line,#334155);padding:10px;min-width:110px;text-align:left}body[data-fixed-template="${pack.skin}"] .fixed-steps{display:grid;gap:12px;padding-left:23px}body[data-fixed-template="${pack.skin}"] .fixed-related-links{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0}body[data-fixed-template="${pack.skin}"] .fixed-related-links a{border:1px solid var(--line,#334155);border-radius:12px;padding:14px;max-width:360px}body[data-fixed-template="${pack.skin}"] .fixed-related-links span{display:block;font-size:13px;margin-top:8px;opacity:.8}body[data-fixed-template="${pack.skin}"] .fixed-footer-links{display:flex;flex-wrap:wrap;gap:15px;margin-top:15px}body[data-fixed-template="portal"] .header{height:auto;min-height:72px;flex-wrap:wrap;padding:12px 0}body[data-fixed-template="portal"] .nav{display:flex!important;flex-wrap:wrap;margin-left:auto}body[data-fixed-template="portal"] .nav-link{padding:8px 10px}@media(max-width:600px){body[data-fixed-template="portal"] .nav{margin-left:0;width:100%}}\n`}
-export function renderFixedDocument(input:FixedTemplateInput):{html:string;body:string;chrome:string;rest:string}{const html=renderFixedTemplate(input),body=extractBody(html),parts=splitFixedChrome(body,templatePack(input.skin).skin);const rest=parts.rest.replace(/<footer\b[^>]*>[\s\S]*?<\/footer>/gi,"");return{html,body,chrome:parts.chrome,rest}}
+// Ad slots are inserted between existing elements. Content, headings and
+// their hierarchy remain byte-for-byte unchanged.
+const BANNER_SLOT = '<div data-adsterra-banner-slot="" class="adsterra-slot"></div>';
+const NATIVE_SLOT = '<div data-adsterra-native-slot="" class="adsterra-slot"></div>';
+
+function insertAfterSection(html: string, className: string, markup: string): string {
+  const opening = new RegExp('<section\\b[^>]*class="' + className + '"[^>]*>');
+  const match = opening.exec(html);
+  if (!match) throw new Error("Missing fixed-template content block: " + className);
+  let index = match.index + match[0].length;
+  let depth = 1;
+  while (depth && index < html.length) {
+    const open = html.indexOf("<section", index);
+    const close = html.indexOf("</section>", index);
+    if (close < 0) throw new Error("Unclosed template section: " + className);
+    if (open >= 0 && open < close) {
+      depth++;
+      index = open + 8;
+    } else {
+      depth--;
+      index = close + "</section>".length;
+    }
+  }
+  return html.slice(0, index) + markup + html.slice(index);
+}
+function insertAdSlots(rest: string, page: "home" | "inner"): string {
+  if (page === "home") {
+    const withBanner = insertAfterSection(rest, "hero", BANNER_SLOT);
+    return insertAfterSection(withBanner, "section", NATIVE_SLOT);
+  }
+  const articleStart = rest.indexOf('<article class="template-inner-article">');
+  if (articleStart < 0) throw new Error("Missing inner-page article");
+  const headingEnd = rest.indexOf("</h1>", articleStart);
+  if (headingEnd < 0) throw new Error("Missing inner-page heading");
+  const leadStart = rest.indexOf("<p>", headingEnd);
+  const leadEnd = rest.indexOf("</p>", leadStart) + 4;
+  if (leadStart < 0 || leadEnd < 4) throw new Error("Missing inner-page lead");
+  const withBanner = rest.slice(0, leadEnd) + BANNER_SLOT + rest.slice(leadEnd);
+  const firstSection = withBanner.indexOf('<section class="fixed-content-section"', leadEnd);
+  if (firstSection < 0) throw new Error("Missing inner-page first content block");
+  const firstSectionEnd = withBanner.indexOf("</section>", firstSection);
+  const sectionHtml = withBanner.slice(firstSection, firstSectionEnd);
+  const paragraphs = [...sectionHtml.matchAll(/<p(?:\s[^>]*)?>[\s\S]*?<\/p>/g)];
+  if (!paragraphs.length) throw new Error("Missing first content paragraphs");
+  // Two complete pre-existing paragraphs form the spacing between ads.
+  const target = paragraphs[Math.min(1, paragraphs.length - 1)];
+  const pos = firstSection + (target.index ?? 0) + target[0].length;
+  return withBanner.slice(0, pos) + NATIVE_SLOT + withBanner.slice(pos);
+}
+export function renderFixedDocument(input:FixedTemplateInput):{html:string;body:string;chrome:string;rest:string}{
+  const html=renderFixedTemplate(input);
+  const body=extractBody(html);
+  const parts=splitFixedChrome(body,templatePack(input.skin).skin);
+  const clean=parts.rest.replace(/<footer\b[^>]*>[\s\S]*?<\/footer>/gi,"");
+  return {html,body,chrome:parts.chrome,rest:insertAdSlots(clean,input.page)};
+}
+

@@ -533,3 +533,59 @@ html[data-skin="horror"] .skin-article-hero { border: 0; min-height: 28vh; }
   .skin-nav { display: none; width: 100%; }
   .skin-nav.is-open { display: flex; flex-direction: column; padding-bottom: .8rem; }
 }
+
+
+/* Advertising is a clearly labeled, independent surface. */
+.adsterra-slot {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  margin: 18px auto 24px;
+}
+.adsterra-placement {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 10px 12px;
+  overflow: clip;
+  border-radius: 10px;
+}
+.adsterra-placement-banner {
+  min-height: 120px;
+}
+.adsterra-placement-banner[data-adsterra-mode="mobile"] {
+  min-height: 80px;
+}
+.adsterra-label {
+  font-size: 10px;
+  line-height: 16px;
+  letter-spacing: .08em;
+  color: hsl(var(--muted-foreground) / .8);
+  text-align: center;
+  margin-bottom: 7px;
+}
+.adsterra-banner-frame {
+  display: block;
+  max-width: 100%;
+  border: none;
+  overflow: hidden;
+}
+.adsterra-placement-native {
+  border: 1px solid hsl(var(--border) / .55);
+  background: hsl(var(--card) / .3);
+}
+.adsterra-native-content {
+  width: 100%;
+  max-width: 100%;
+  overflow: clip;
+}
+@media (max-width: 767px) {
+  .adsterra-placement {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
