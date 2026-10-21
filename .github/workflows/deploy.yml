@@ -100,9 +100,9 @@ jobs:
               assert "G-FKWD73D38M" in html, f"GA4 missing from {path or '/'}"
               assert "grip-training/" in html and "ranch/" in html, f"Internal navigation missing from {path or '/'}"
               assert not any(term in html for term in ("Yorich", "Codex", "ChatGPT", "Gator Dragon Games")), f"Unexpected template text in {path or '/'}"
-              assert html.count('data-adsterra-banner-slot') == 1, f"Banner slot count wrong: {path or '/'}"
-              assert html.count('data-adsterra-native-slot') == 1, f"Native slot count wrong: {path or '/'}"
-              assert html.index('data-adsterra-banner-slot') < html.index('data-adsterra-native-slot'), f"Ad order wrong: {path or '/'}"
+              assert html.count('<div data-adsterra-banner-slot=""') == 1, f"Banner slot count wrong: {path or '/'}"
+              assert html.count('<div data-adsterra-native-slot=""') == 1, f"Native slot count wrong: {path or '/'}"
+              assert html.index('<div data-adsterra-banner-slot=""') < html.index('<div data-adsterra-native-slot=""'), f"Ad order wrong: {path or '/'}"
               assert '77e56c843758b0ecc4926861f839163d' not in html and '652741a5d9790f42d78e06b2c3546fb6' not in html, "Banner must load on client only"
               print(f"Verified HTTP 200, H1, canonical, GA4 and navigation: {expected_url}")
           assert len(set(footers)) == 1, "Footer contents differ between home and inner pages"
